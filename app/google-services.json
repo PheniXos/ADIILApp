@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "24584950997",
+    "firebase_url": "https://adill-app-bdd.firebaseio.com",
+    "project_id": "adill-app-bdd",
+    "storage_bucket": "adill-app-bdd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24584950997:android:26c7f0bbb01c1845",
+        "android_client_info": {
+          "package_name": "justin_martin.adiilapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24584950997-fdqud8gh8483pla0ant716999f0mbcqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "justin_martin.adiilapp",
+            "certificate_hash": "a24287ff17e09c9dd39420ca0f109746867b2983"
+          }
+        },
+        {
+          "client_id": "24584950997-rijbdk2tdqd6dd4mmnvdbd0r2sb5sv3l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6RaF68ih2Mxknw1ppfWzL8m_3ZBnSBHw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24584950997-rijbdk2tdqd6dd4mmnvdbd0r2sb5sv3l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
