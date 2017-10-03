@@ -8,7 +8,8 @@
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="50dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ImageView
         android:layout_width="match_parent"
@@ -19,10 +20,11 @@
 
 
     <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/gif_loading"
-        />
+        android:layout_height="284dp"
+        android:src="@drawable/cat_loading_sf"
+        android:layout_weight="0.81" />
 
 
 </LinearLayout>
