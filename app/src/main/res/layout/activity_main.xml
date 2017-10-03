@@ -13,8 +13,16 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/ADIIL_Logo"
+        android:src="@drawable/adiil_logo"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="14dp" />
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/gif_loading"
+        />
+
 
 </LinearLayout>
