@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity implements Constant{
 
     @Override
@@ -16,11 +18,17 @@ public class MainActivity extends AppCompatActivity implements Constant{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         checkConnexion();
     }
 
     public void checkConnexion(){
-        if(isOnline()){
+        if(isOnline() && isPingedServ()){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
@@ -40,7 +48,20 @@ public class MainActivity extends AppCompatActivity implements Constant{
         }
     }
 
-    public boolean isOnline() {
+    private boolean isPingedServ() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException e)          { e.printStackTrace(); }
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        return false;
+    }
+
+    private boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 

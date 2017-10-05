@@ -7,4 +7,5 @@
     <string name="login_labelPassword">Mot de passe :</string>
     <string name="login_textButton">Se connecter</string>
     <string name="login_resetPassword">Mot de passe oubié ?</string>
+    <string name="auth_failed">Erreur authentification</string>
 </resources>

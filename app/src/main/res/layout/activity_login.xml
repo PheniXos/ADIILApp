@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:text="@string/login_title"
         android:layout_gravity="center"
-        android:layout_marginTop="3dp"
         />
 
         <LinearLayout
@@ -41,7 +40,7 @@
                 />
 
             <EditText
-                android:id="@+id/emailLogin"
+                android:id="@+id/emailInputLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -62,7 +61,7 @@
                 />
 
             <EditText
-                android:id="@+id/passwordLogin"
+                android:id="@+id/passwordInputLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -82,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/login_textButton"
                 android:background="@color/colorPrimary"
-                android:textColor="#FFFFFF">
+                android:textColor="#FFFFFF"
+                android:id="@+id/connexionButtonLogin">
             </Button>
 
             <TextView
@@ -91,6 +91,7 @@
                 android:layout_height="match_parent"
                 android:text="@string/login_resetPassword"
                 android:textColor="@color/colorPrimary"
+                android:id="@+id/forgetPasswordLogin"
                 />
 
         </LinearLayout>
