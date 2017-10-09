@@ -23,7 +23,8 @@
         android:id="@+id/gifImageView"
         android:layout_width="match_parent"
         android:layout_height="284dp"
-        android:src="@drawable/cat_loading_sf"
+        android:src="@drawable/beer_loading"
+        android:background="@android:color/transparent"
         android:layout_weight="0.81" />
 
 
