@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity implements Constant{
 
     public void checkConnexion(){
         if(isOnline() && isPingedServ()){
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, RegisterActivity.class);
             startActivity(intent);
         }
         else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Internet Connexion");
-            alertDialog.setMessage(Constant.NETWORK_ERROR);
+            alertDialog.setMessage(getString(R.string.networkError));
             alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Réssayer",new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();

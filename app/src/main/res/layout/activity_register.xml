@@ -4,32 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="justin_martin.adiilapp.LoginActivity"
+    tools:context="justin_martin.adiilapp.RegisterActivity"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:paddingTop="20dp"
     android:orientation="vertical"
     android:weightSum="1">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="153dp"
-        android:layout_height="115dp"
-        android:layout_gravity="center"
-        android:src="@drawable/adiil_logo" />
-
     <TextView
+        android:layout_marginTop="10dp"
         android:textSize="@dimen/login_titleSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_title"
+        android:text="@string/register_title"
         android:layout_gravity="center"
         />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
@@ -38,7 +32,7 @@
                 app:errorEnabled="true">
 
                 <EditText
-                    android:id="@+id/emailInputLogin"
+                    android:id="@+id/emailInputRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -48,27 +42,38 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            tools:ignore="UselessParent">
 
-            <android.support.design.widget.TextInputLayout
+            <RadioButton
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="@string/Register_labelNonAdherent" />
 
-                <EditText
-                    android:id="@+id/passwordInputLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/login_labelPassword"
-                    android:imeOptions=""/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Register_labelAdherent" />
 
-            </android.support.design.widget.TextInputLayout>
 
-        </LinearLayout>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Register_labelAdmin" />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -78,23 +83,15 @@
             android:layout_marginTop="25dp"
             >
 
+            <!-- TODO dynamic link -->
             <Button
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/login_textButton"
+                android:text="@string/register_textButton"
                 android:background="@color/colorPrimary"
                 android:textColor="#FFFFFF"
-                android:id="@+id/connexionButtonLogin">
+                android:id="@+id/inscriptionButtonRegister">
             </Button>
-
-            <TextView
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/login_resetPassword"
-                android:textColor="@color/colorPrimary"
-                android:id="@+id/forgetPasswordLogin"
-                />
 
         </LinearLayout>
 

@@ -1,10 +1,13 @@
 package justin_martin.adiilapp;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +17,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthActionCodeException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
@@ -28,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button connexionButtonLogin;
     private TextView forgetPasswordLogin ;
+
+    private String snackbarText;
 
 
     @Override
@@ -48,11 +56,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        forgetPasswordLogin.setOnClickListener(new      View.OnClickListener() {
+        forgetPasswordLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                //TODO TRY to send new mail
-                //TODO error report
-                //TODo success -> message aler box
+                    resetPassword(emailInputLogin.getText().toString());
             }
         });
 
@@ -72,30 +78,87 @@ public class LoginActivity extends AppCompatActivity {
                 // ...
             }
         };
+
+
+        passwordInputLogin.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    signin(emailInputLogin.getText().toString(), passwordInputLogin.getText().toString());
+                    handled = true;
+                }
+                return handled;
+            }
+        });
     }
 
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+
     }
 
-    public void signin(String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("sucess", "signInWithEmail:onComplete:" + task.isSuccessful());
+    private void signin(String email, String password) {
+        if(email.isEmpty() ||password.isEmpty()) {
+            snackbarText = getString(R.string.EmailOrPasswordEmpty);
+            showSnackBar();
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w("login", "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
+                            if (!task.isSuccessful()) {
+                                try {
+                                    throw task.getException();
+                                } catch (FirebaseAuthInvalidUserException e) {
+                                    snackbarText = getString(R.string.AuthMailError);
+                                } catch (FirebaseAuthInvalidCredentialsException e) {
+                                    snackbarText = getString(R.string.AuthPasswordError);
+                                } catch (Exception e) {
+                                    snackbarText = e.getMessage();
+                                }
+                                showSnackBar();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
+
+    private void showSnackBar() {
+        Snackbar mySnackbar = Snackbar.make(findViewById(android.R.id.content),
+                snackbarText, Snackbar.LENGTH_SHORT);
+        mySnackbar.show();
+    }
+
+    private void resetPassword(String email) {
+        if(email.isEmpty()) {
+            snackbarText = getString(R.string.EmailEmpty);
+            showSnackBar();
+        }
+        else {
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                snackbarText = getString(R.string.ResetPasswordSent);
+                            } else {
+                                try {
+                                    throw task.getException();
+                                } catch (FirebaseAuthInvalidUserException e) {
+                                    snackbarText = getString(R.string.ResetPasswordMailError);
+                                } catch (Exception e) {
+                                    snackbarText = e.getMessage();
+                                }
+                            }
+                            showSnackBar();
+                        }
+                    });
+        }
+    }
+
 }

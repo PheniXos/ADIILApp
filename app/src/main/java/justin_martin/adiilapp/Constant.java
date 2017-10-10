@@ -6,5 +6,5 @@ package justin_martin.adiilapp;
 
 public interface Constant {
 
-    public String NETWORK_ERROR = "Il semble y avoir un problème avec votre connexion Internet";
+
 }

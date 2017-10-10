@@ -8,4 +8,17 @@
     <string name="login_textButton">Se connecter</string>
     <string name="login_resetPassword">Mot de passe oubié ?</string>
     <string name="auth_failed">Erreur authentification</string>
+    <string name="networkError">Il semble y avoir un problème avec votre connexion Internet</string>
+    <string name="ResetPasswordMailError">Cette email ne correspond a aucun compte</string>
+    <string name="ResetPasswordSent">Email de reinitialisation envoyé</string>
+    <string name="AuthMailError">Cette email ne correpond a aucun compte</string>
+    <string name="AuthPasswordError">Le mot de passe est éroné</string>
+    <string name="EmailOrPasswordEmpty">Veuillez remplir les champs email et mot de passe</string>
+    <string name="EmailEmpty">Veuillez remplir le champ email</string>
+    <string name="register_title">Inscription</string>
+    <string name="Register_labelAdherent">Adhérent</string>
+    <string name="Register_labelNonAdherent">Non adhérent</string>
+    <string name="Register_labelAdmin">Administrateur</string>
+    <string name="register_textButton">Inscription</string>
+
 </resources>
