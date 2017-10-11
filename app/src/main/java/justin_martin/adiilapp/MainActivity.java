@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Constant{
 
     public void checkConnexion(){
         if(isOnline() && isPingedServ()){
-            Intent intent = new Intent(this, RegisterActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
         else {
